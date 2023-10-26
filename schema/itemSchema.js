@@ -17,7 +17,8 @@ const itemSchema = new mongoose.Schema({
 
     isInStock: {
         type: Boolean
-    },  user: {
+    },
+    user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "users"
     }
@@ -25,7 +26,7 @@ const itemSchema = new mongoose.Schema({
 
 }, {timestamps: true});
 
-const itemsCollection = mongoose.Model(itemSchema, shopitems);
+const itemsCollection = mongoose.model("shopitems", itemSchema);
 
 
 
