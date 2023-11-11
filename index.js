@@ -8,21 +8,21 @@ const authRoute = require("./Routes/auth");
 const itemsRoute = require("./Routes/items")
 
 const connect = mongoose.connect(process.env.mongoDbUrl);
-try {
-    async function myFunction1() {
-        await connect;
-        if(connect) console.log("successfully connected to database");
-    }
-    myFunction1();
-} catch (error) {
-    console.log("could not successfully connect to database" + error);
-}
+// try {
+//     async function myFunction1() {
+//         await connect;
+//         if(connect) console.log("successfully connected to database");
+//     }
+//     myFunction1();
+// } catch (error) {
+//     console.log("could not successfully connect to database" + error);
+// }
 
-// connect.then(() => {
-//     console.log("successfully connected to database");
-// }).catch((error) => {
-//     console.log("could not successfully connect to database " + error);
-// });
+connect.then(() => {
+    console.log("successfully connected to database");
+}).catch((error) => {
+    console.log("could not successfully connect to database " + error);
+});
 app.get("^/$|/home(.html)?", async (req, res) => {
     res.send('Welcome');
 });
