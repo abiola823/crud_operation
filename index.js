@@ -18,8 +18,8 @@ app.get("^/$|/home(.html)?", async (req, res) => {
     res.send('Welcome');
 });
 
-app.use(express.json());
 app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/v1/auth", authRoute);
 app.use("/v1/items", itemsRoute)
