@@ -1,6 +1,6 @@
 const express = require("express");
 const app = express();
-const port = 3000|| process.env.PORT;
+const port = 3000 || process.env.PORT;
 const mongoose = require("mongoose");
 const path = require("path");
 require("dotenv").config();
@@ -8,15 +8,6 @@ const authRoute = require("./Routes/auth");
 const itemsRoute = require("./Routes/items")
 
 const connect = mongoose.connect(process.env.mongoDbUrl);
-// try {
-//     async function myFunction1() {
-//         await connect;
-//         if(connect) console.log("successfully connected to database");
-//     }
-//     myFunction1();
-// } catch (error) {
-//     console.log("could not successfully connect to database" + error);
-// }
 
 connect.then(() => {
     console.log("successfully connected to database");
