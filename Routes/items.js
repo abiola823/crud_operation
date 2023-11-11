@@ -15,15 +15,15 @@ router.get("/", async (req, res) => {
     const items = await itemsCollection.find({ user: req.decoded.userId });
     res.json(items);
   });
-  router.get("/pop", async (req, res) => {
-    const items = await itemsCollection.find({ user: req.decoded.userId });
-    const lent = items.length
-    res.json(lent);
-  });
-  router.get("/count", async (req, res) => {
-    const items = await itemsCollection.distinct("users");
-    res.json(items);
-  });
+  // router.get("/pop", async (req, res) => {
+  //   const items = await itemsCollection.find({ user: req.decoded.userId });
+  //   const lent = items.length
+  //   res.json(lent);
+  // });
+  // router.get("/count", async (req, res) => {
+  //   const items = await itemsCollection.distinct("users");
+  //   res.json(items);
+  // });
 
 
   router.post("/add-items", async (req, res) => {

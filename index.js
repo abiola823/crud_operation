@@ -23,7 +23,7 @@ app.use(express.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, "public")));
 app.use("/v1/auth", authRoute);
 app.use("/v1/items", itemsRoute)
-
+app.
 
 
 app.listen(port, () => {

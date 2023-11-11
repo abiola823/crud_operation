@@ -29,13 +29,13 @@ Router.post("/login", async (req, res) => {
     try {
         const {username, password} = req.body;
 
-        const loginValidationSchema = joi.object({
-            username:  joi.string(),
-            password: joi.string().required().min(6).max(30)
-        });
-        const {error: validationError} = loginValidationSchema.validate({username, password});
+        // const loginValidationSchema = joi.object({
+        //     username:  joi.string(),
+        //     password: joi.string().required().min(6).max(30)
+        // }); 
+        // const {error: validationError} = loginValidationSchema.validate({username, password});
     
-        if(validationError) return res.send(validationError);
+        // if(validationError) return res.send(validationError);
         
         const userDetail = await usersCollection.findOne({username});
     
