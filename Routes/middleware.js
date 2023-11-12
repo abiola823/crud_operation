@@ -23,7 +23,7 @@ function isUserLoggedIn(req, res, next) {
       return;
     }
   
-     res.status(403).send("action-not-allowed");
+    res.status(401).send("not-authorized");
   
   }
 
@@ -31,7 +31,7 @@ function isUserLoggedIn(req, res, next) {
     if(req.decoded.role == "admin") {
       next();
     } else {
-      res.status(401).send("You are not an admin");
+      res.status(403).send("action-not-allowed");
     }
   }
 
