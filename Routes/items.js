@@ -87,7 +87,7 @@ router.get("/by-id/:id", async (req, res) => {
   router.patch("/:id", async (req, res) => {
     const {id} = req.params;
     const updatedTask = await itemsCollection.findByIdAndUpdate(id, {
-      name: req.body.name, description: req.body.description, price: req.body.price, isInStore: req.body.isInStore
+      name: req.body.name, description: req.body.description, price: req.body.price, isInStock: req.body.isInStock
     }, { new: true });
   
     res.json({
