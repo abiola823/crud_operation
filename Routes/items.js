@@ -79,7 +79,7 @@ router.get("/by-id/:id", async (req, res) => {
       res.status(401).send("You are not allowed to delete this task");
       return;
     }
-  console.log("");
+  console.log("hello world");
     await itemsCollection.findByIdAndDelete(req.params.id);
     res.send("Task has been deleted sucessfully!");
   });
