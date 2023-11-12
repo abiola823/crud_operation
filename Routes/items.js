@@ -76,7 +76,7 @@ router.get("/by-id/:id", async (req, res) => {
     const note = await itemsCollection.findById(id);
   
     if(req.decoded.userId != note.user) {
-      res.status(401).send("You are not allowed to delete this task");
+      console.log("hello world");
       return;
     }
   console.log("hello world");
