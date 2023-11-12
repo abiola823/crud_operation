@@ -42,12 +42,12 @@ router.get("/by-id/:id", async (req, res) => {
   router.post("/add-items", async (req, res) => {
  
     try {
-      const {name, description, price, isInStore, } = req.body;
+      const {name, description, price, isInStock, } = req.body;
       const newItem = await itemsCollection.create({
         name,
         description,
         price,
-        isInStore,
+        isInStock,
         user: req.decoded.userId
       });
   
