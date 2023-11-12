@@ -15,6 +15,9 @@ router.get("/", async (req, res) => {
     const items = await itemsCollection.find({ user: req.decoded.userId });
     res.json(items);
   });
+  
+  router.use(adminsOnly);
+
   // router.get("/pop", async (req, res) => {
   //   const items = await itemsCollection.find({ user: req.decoded.userId });
   //   const lent = items.length
