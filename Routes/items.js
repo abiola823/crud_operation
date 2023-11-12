@@ -11,10 +11,16 @@ require('dotenv').config();
 
 router.use(isUserLoggedIn);
 
-router.get("/:id", async (req, res) => {
-    const items = await itemsCollection.find({ user: req.decoded.userId });
-    res.json(items);
-  });
+
+router.get("/by-id/:id", async (req, res) => {
+  try {
+    const items = await itemsCollection.findById(req.params.id);
+    res.send(items);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send("internal-server-error");
+  }
+});
 
   router.use(adminsOnly);
 
@@ -32,15 +38,6 @@ router.get("/:id", async (req, res) => {
     res.json(items);
   });
 
-  router.get("/by-id/:id", async (req, res) => {
-    try {
-      const items = await itemsCollection.findById(req.params.id);
-      res.send(items);
-    } catch (error) {
-      console.log(error);
-      res.status(500).send("internal-server-error");
-    }
-  });
 
   router.post("/add-items", async (req, res) => {
  
