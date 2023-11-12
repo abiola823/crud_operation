@@ -11,11 +11,11 @@ require('dotenv').config();
 
 router.use(isUserLoggedIn);
 
-router.get("/", async (req, res) => {
+router.get("/:id", async (req, res) => {
     const items = await itemsCollection.find({ user: req.decoded.userId });
     res.json(items);
   });
-  
+
   router.use(adminsOnly);
 
   // router.get("/pop", async (req, res) => {
