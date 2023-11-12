@@ -28,13 +28,13 @@ router.get("/:id", async (req, res) => {
   //   res.json(items);
   // });
   router.get("/", async (req, res) => {
-    const items = await itemsCollection.find({ user: req.decoded.userId });
+    const items = await itemsCollection.find({user: req.decoded.userId });
     res.json(items);
   });
 
   router.get("/by-id/:id", async (req, res) => {
     try {
-      const items = await usersCollection.findById(req.params.id);
+      const items = await itemsCollection.findById(req.params.id);
       res.send(items);
     } catch (error) {
       console.log(error);
