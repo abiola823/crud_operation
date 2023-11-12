@@ -14,9 +14,7 @@ connect.then(() => {
 }).catch((error) => {
     console.log("could not successfully connect to database " + error);
 });
-// app.get("^/$|/home(.html)?", async (req, res) => {
-//     res.send('Welcome');
-// });
+
 
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
