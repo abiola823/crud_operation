@@ -51,12 +51,6 @@ router.get("/:id", async (req, res) => {
     }
   });
 
-  router.post("/items", async (req, res) =>{
-    await itemsCollection.create({
-
-    });
-  });
-
   router.get("/only-admins/all-items", adminsOnly, async (req, res) => {
     try {
         await itemsCollection.find();
@@ -76,8 +70,20 @@ router.get("/:id", async (req, res) => {
       return;
     }
   
-    await taskCollection.findByIdAndDelete(req.params.id);
+    await itemsCollection.findByIdAndDelete(req.params.id);
     res.send("Task has been deleted sucessfully!");
+  });
+
+  router.patch("/:id", async (req, res) => {
+    const {id} = req.params;
+    const updatedTask = await itemsCollection.findByIdAndUpdate(id, {
+      name: req.body.name, description: req.body.description, price: req.body.price, isInStore: req.body.isInStore
+    }, { new: true });
+  
+    res.json({
+      message: "Task updated Sucessfully",
+      updatedTask
+    });
   });
 
 
