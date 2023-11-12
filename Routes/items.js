@@ -76,12 +76,12 @@ router.get("/by-id/:id", async (req, res) => {
     const note = await itemsCollection.findById(id);
   
     if(req.decoded.userId != note.user) {
-      res.status(401).send("You are not allowed to delete this tasks");
+      res.status(401).send("You are not allowed to delete this item(s)");
       return;
     }
 
     await itemsCollection.findByIdAndDelete(req.params.id);
-    res.send("Task has been deleted sucessfully!");
+    res.send("Item has been deleted sucessfully!");
   });
 
   router.patch("/:id", async (req, res) => {
@@ -91,7 +91,7 @@ router.get("/by-id/:id", async (req, res) => {
     }, { new: true });
   
     res.json({
-      message: "Task updated Sucessfully",
+      message: "Item updated Sucessfully",
       updatedTask
     });
   });
